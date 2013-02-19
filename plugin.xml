@@ -1,0 +1,4 @@
+<!--   -->
+<plugin id="net.sourceforge.dita4publishers.webmapdomain">
+  <feature extension="dita.specialization.catalog.relative" value="catalog.xml" type="file"/>
+</plugin>
