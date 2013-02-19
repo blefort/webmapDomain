@@ -34,7 +34,7 @@
 >
 
 <!ENTITY % webmap-d-title
-"webtitle"
+"websitetitle"
 >
 
 <!ENTITY webmap-d-att "(map webmap-d)">
