@@ -32,11 +32,7 @@
 <!-- ============================================================= -->
 
 <!-- Topicref types: -->
-<!ENTITY % page "page" >
-<!ENTITY % pageset "pageset" >
-<!ENTITY % homepage "homepage" >
 <!ENTITY % widget "widget" >
-<!ENTITY % marjorie "marjorie" >
 <!ENTITY % websitetitle  "websitetitle" >
 
 
@@ -136,44 +132,7 @@
 <!ATTLIST websitetitle    %websitetitle.attributes;>
 
 
-<!-- page -->
-<!ENTITY % page.content
-    "
-     (widget?)
-    "
->
-<!ENTITY % page.attributes
-             "             "
->
 
-<!ELEMENT page    %page.content;>
-<!ATTLIST page    %page.attributes;>
-
-<!ELEMENT homepage    %page.content;>
-<!ATTLIST homepage    %page.attributes;>
-
-
-<!-- pageset -->
-<!ENTITY % pageset.content
- 	"((%topicref;)* |
-      (%page;)*
-    )"
->
-
-<!ENTITY % pageset.attributes
-            "%id-atts;
-              %localization-atts;
-              base 
-                        CDATA 
-                                  #IMPLIED
-              %base-attribute-extensions;
-              outputclass
-                        CDATA 
-                                  #IMPLIED"
->
-
-<!ELEMENT pageset    %pageset.content;>
-<!ATTLIST pageset    %pageset.attributes;>
 
 <!-- widget content -->
 <!ENTITY % widget.content
@@ -189,8 +148,7 @@
 
 
 
-<!ATTLIST page          %global-atts; class CDATA "+ map/topicref webmap-d/page ">
-<!ATTLIST pageset          %global-atts; class CDATA "+ map/topicref webmap-d/pageset ">
+
 <!ATTLIST websitetitle      %global-atts; class CDATA "+ topic/title webmap-d/websitetitle ">
 
 

@@ -30,7 +30,7 @@
 <!-- ============================================================= -->
 
 <!ENTITY % webmap-d-topicref 
-"page"
+"widget"
 >
 
 <!ENTITY % webmap-d-title
