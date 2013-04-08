@@ -34,7 +34,7 @@
 <!-- Topicref types: -->
 <!ENTITY % widget "widget" >
 <!ENTITY % websitetitle  "websitetitle" >
-
+<!ENTITY % webpagetitle  "webpagetitle" >
 
 <!-- ============================================================= -->
 <!--                    COMMON ATTLIST SETS                        -->
@@ -131,6 +131,30 @@
 <!ELEMENT websitetitle    %websitetitle.content;>
 <!ATTLIST websitetitle    %websitetitle.attributes;>
 
+<!-- webpagetitle -->
+<!ENTITY % webpagetitle.content
+                       "((%topicmeta;)?, 
+                         (%anchor; | 
+                          %data.elements.incl; | 
+                          %navref; | 
+                          %topicref;)* )"
+>
+
+
+<!ENTITY % webpagetitle.attributes
+             "%id-atts;
+              %localization-atts;
+              %topicref-atts;
+              base 
+                        CDATA 
+                                  #IMPLIED
+              %base-attribute-extensions;
+              outputclass
+                        CDATA 
+                                  #IMPLIED"
+>
+<!ELEMENT webpagetitle    %webpagetitle.content;>
+<!ATTLIST webpagetitle    %webpagetitle.attributes;>
 
 
 
