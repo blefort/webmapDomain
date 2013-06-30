@@ -174,7 +174,7 @@
 
 
 <!ATTLIST websitetitle      %global-atts; class CDATA "+ topic/title webmap-d/websitetitle ">
-
+<!ATTLIST webpagetitle      %global-atts; class CDATA "+ topic/title webmap-d/webpagetitle ">
 
 
 <!-- ================== End web map domain ============================= -->
