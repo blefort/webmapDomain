@@ -31,14 +31,33 @@
 <!--                   ELEMENT NAME ENTITIES                       -->
 <!-- ============================================================= -->
 
-<!-- Topicref types: -->
+<!-- topicref types - topicgroup -->
 <!ENTITY % widget "widget" >
 <!ENTITY % websitetitle  "websitetitle" >
 <!ENTITY % webpagetitle  "webpagetitle" >
+<!ENTITY % layout  "layout" >
+<!ENTITY % columns  "columns" >
+<!ENTITY % column  "column" >
+
+<!-- topicref  -->
+<!ENTITY % webpageref  "webpageref" >
+
+<!-- topicref types - extractor -->
+<!ENTITY % topic-extract-title  "topic-extract-title" >
+<!ENTITY % topic-extract-block  "topic-extract-block" >
+<!ENTITY % topic-extract-short-desc  "topic-extract-short-desc" >
 
 <!-- ============================================================= -->
 <!--                    COMMON ATTLIST SETS                        -->
 <!-- ============================================================= -->
+
+<!-- all webmap topicref -->
+<!ENTITY % webmap.topicref.content
+    "
+     (((%topicref;) | (topic-extract-block)))
+    "
+>
+
 
 <!-- Currently: same as topicref, sets collection-type to 'sequence' -->
 
@@ -161,20 +180,93 @@
 <!-- widget content -->
 <!ENTITY % widget.content
     "
-     ((%topicref;)*)
+     ((%webmap.topicref.content;)*)
     "
 >
 <!ENTITY % widget.attributes
-             "             "
+             "%id-atts;
+              %localization-atts;
+              %topicref-atts;
+              base 
+                        CDATA 
+                                  #IMPLIED
+              %base-attribute-extensions;
+              outputclass
+                        CDATA 
+                                  #IMPLIED"
 >
 <!ELEMENT widget    %widget.content;>
 <!ATTLIST widget    %widget.attributes;>
 
 
+<!-- layout content -->
+<!ENTITY % layout.content
+    "
+     (
+     (%columns;)*
+     )
+    "
+>
+<!ELEMENT layout    %layout.content;>
+<!ATTLIST layout    %widget.attributes;>
+
+
+<!-- columns content -->
+<!ENTITY % columns.content
+    "
+     (column*)
+    "
+>
+<!ENTITY % columns.attributes
+             "%id-atts;
+              %localization-atts;
+              %topicref-atts;              
+              base  CDATA  #IMPLIED
+              %base-attribute-extensions;
+              outputclass CDATA #IMPLIED
+              size CDATA #IMPLIED
+              prepend CDATA #IMPLIED
+              append CDATA #IMPLIED"
+>
+<!ELEMENT columns    %columns.content;>
+<!ATTLIST columns    %columns.attributes;>
+
+<!ENTITY % column.content
+     "
+     ((%webmap.topicref.content;)*)
+    "
+>
+
+<!ELEMENT column  %column.content;>
+<!ATTLIST column  %columns.attributes;>
+
+<!-- topic-extract-block -->
+
+
+
+<!ENTITY % topic-extract-block.content
+    "
+     ((%webmap.topicref.content;)*)
+    "
+>
+<!ENTITY % topic-extract-block.attributes
+             "%web-topicref-atts;
+             keyref CDATA #IMPLIED
+             href CDATA #IMPLIED
+             type CDATA  #IMPLIED"
+>
+<!ELEMENT topic-extract-block    %topic-extract-block.content;>
+<!ATTLIST topic-extract-block    %topic-extract-block.attributes;>
 
 
 <!ATTLIST websitetitle      %global-atts; class CDATA "+ topic/title webmap-d/websitetitle ">
 <!ATTLIST webpagetitle      %global-atts; class CDATA "+ topic/title webmap-d/webpagetitle ">
+
+<!ATTLIST layout       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/layout ">
+<!ATTLIST columns      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/l-column ">
+<!ATTLIST column       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/column ">
+
+<!ATTLIST topic-extract-block   %global-atts; class CDATA "+ map/topicref webmap-d/extractor extractor/block ">
 
 
 <!-- ================== End web map domain ============================= -->
