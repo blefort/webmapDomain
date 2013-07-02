@@ -38,6 +38,11 @@
 <!ENTITY % layout  "layout" >
 <!ENTITY % columns  "columns" >
 <!ENTITY % column  "column" >
+<!ENTITY % article  "article" >
+<!ENTITY % aside  "aside" >
+<!ENTITY % nav  "nav" >
+<!ENTITY % section  "section" >
+
 
 <!-- topicref  -->
 <!ENTITY % webpageref  "webpageref" >
@@ -68,7 +73,7 @@
                          sequence | 
                          unordered |
                          -dita-use-conref-target) 
-                                 'sequence'
+                                 #IMPLIED
               type 
                         CDATA 
                                   #IMPLIED
@@ -120,7 +125,7 @@
   "
 >
 
-
+<!ENTITY % sectioning-atts "%web-topicref-atts;">
 
 
 <!-- ============================================================= -->
@@ -128,9 +133,18 @@
 <!-- ============================================================= -->
 
 
+<!-- sectioning elements -->
+<!-- webpagetitle -->
+<!ENTITY % sectioning.content "((%topicmeta;)?, 
+                         (%anchor; | 
+                          %data.elements.incl; | 
+                          %navref; | 
+                          %layout; |
+                          %widget; |
+                          %topicref;)* )"
+>
 
 
-<!--                    LONG NAME: Front Matter                    -->
 
 <!--                    LONG NAME: web Title                      -->
 <!ENTITY % websitetitle.content
@@ -176,6 +190,14 @@
 <!ATTLIST webpagetitle    %webpagetitle.attributes;>
 
 
+<!-- article aside nav section -->
+<!ENTITY % article.content    "((%sectioning.content;)*)" >
+<!ENTITY % article.attributes  "%sectioning-atts;" >
+
+<!ELEMENT article    %article.content;>
+<!ATTLIST article    %article.attributes;>
+
+<!ENTITY % sectioning.elements "(article*)">
 
 <!-- widget content -->
 <!ENTITY % widget.content
@@ -265,6 +287,8 @@
 <!ATTLIST layout       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/layout ">
 <!ATTLIST columns      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/l-column ">
 <!ATTLIST column       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/column ">
+<!ATTLIST article      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/article ">
+<!ATTLIST widget       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/widget ">
 
 <!ATTLIST topic-extract-block   %global-atts; class CDATA "+ map/topicref webmap-d/extractor extractor/block ">
 
