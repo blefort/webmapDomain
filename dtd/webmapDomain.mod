@@ -42,14 +42,14 @@
 <!ENTITY % aside  "aside" >
 <!ENTITY % nav  "nav" >
 <!ENTITY % section  "section" >
-
+<!ENTITY % main  "main" >
 
 <!-- topicref  -->
 <!ENTITY % webpageref  "webpageref" >
 
 <!-- topicref types - extractor -->
 <!ENTITY % topic-extract-title  "topic-extract-title" >
-<!ENTITY % topic-extract-block  "topic-extract-block" >
+<!ENTITY % render-topicref  "render-topicref" >
 <!ENTITY % topic-extract-short-desc  "topic-extract-short-desc" >
 
 <!-- ============================================================= -->
@@ -59,7 +59,7 @@
 <!-- all webmap topicref -->
 <!ENTITY % webmap.topicref.content
     "
-     (((%topicref;) | (topic-extract-block)))
+     (((%topicref;) | (render-topicref)))
     "
 >
 
@@ -190,14 +190,34 @@
 <!ATTLIST webpagetitle    %webpagetitle.attributes;>
 
 
-<!-- article aside nav section -->
+<!-- article aside section -->
+<!-- nav to be added later -->
 <!ENTITY % article.content    "((%sectioning.content;)*)" >
 <!ENTITY % article.attributes  "%sectioning-atts;" >
 
 <!ELEMENT article    %article.content;>
 <!ATTLIST article    %article.attributes;>
 
-<!ENTITY % sectioning.elements "(article*)">
+<!ENTITY % aside.content    "((%sectioning.content;)*)" >
+<!ENTITY % aside.attributes  "%sectioning-atts;" >
+
+<!ELEMENT aside    %aside.content;>
+<!ATTLIST aside    %aside.attributes;>
+
+<!ENTITY % section.content    "((%sectioning.content;)*)" >
+<!ENTITY % section.attributes  "%sectioning-atts;" >
+
+<!ELEMENT section    %section.content;>
+<!ATTLIST section    %section.attributes;>
+
+<!ENTITY % main.content    "((%sectioning.content;)*)" >
+<!ENTITY % main.attributes  "%sectioning-atts;" >
+
+<!ELEMENT main    %main.content;>
+<!ATTLIST main    %main.attributes;>
+
+<!-- html5 sectioning elements -->
+<!ENTITY % sectioning.elements "article | aside | section | main?">
 
 <!-- widget content -->
 <!ENTITY % widget.content
@@ -262,23 +282,23 @@
 <!ELEMENT column  %column.content;>
 <!ATTLIST column  %columns.attributes;>
 
-<!-- topic-extract-block -->
+<!-- render-topicref -->
 
 
 
-<!ENTITY % topic-extract-block.content
+<!ENTITY % render-topicref.content
     "
      ((%webmap.topicref.content;)*)
     "
 >
-<!ENTITY % topic-extract-block.attributes
+<!ENTITY % render-topicref.attributes
              "%web-topicref-atts;
              keyref CDATA #IMPLIED
              href CDATA #IMPLIED
-             type CDATA  #IMPLIED"
+             as CDATA  #IMPLIED"
 >
-<!ELEMENT topic-extract-block    %topic-extract-block.content;>
-<!ATTLIST topic-extract-block    %topic-extract-block.attributes;>
+<!ELEMENT render-topicref    %render-topicref.content;>
+<!ATTLIST render-topicref    %render-topicref.attributes;>
 
 
 <!ATTLIST websitetitle      %global-atts; class CDATA "+ topic/title webmap-d/websitetitle ">
@@ -287,10 +307,15 @@
 <!ATTLIST layout       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/layout ">
 <!ATTLIST columns      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/l-column ">
 <!ATTLIST column       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/column ">
-<!ATTLIST article      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/article ">
+
+<!ATTLIST article      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/sectioning webmap-d/article ">
+<!ATTLIST section      %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/sectioning webmap-d/section ">
+<!ATTLIST aside        %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/sectioning webmap-d/aside ">
+<!ATTLIST main         %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/sectioning webmap-d/main ">
+
 <!ATTLIST widget       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/widget ">
 
-<!ATTLIST topic-extract-block   %global-atts; class CDATA "+ map/topicref webmap-d/extractor extractor/block ">
+<!ATTLIST render-topicref   %global-atts; class CDATA "+ map/topicref webmap-d/extractor webmap-d/render ">
 
 
 <!-- ================== End web map domain ============================= -->
