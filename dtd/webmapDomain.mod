@@ -32,7 +32,6 @@
 <!-- ============================================================= -->
 
 <!-- topicref types - topicgroup -->
-<!ENTITY % widget "widget" >
 <!ENTITY % websitetitle  "websitetitle" >
 <!ENTITY % webpagetitle  "webpagetitle" >
 <!ENTITY % layout  "layout" >
@@ -44,13 +43,22 @@
 <!ENTITY % section  "section" >
 <!ENTITY % main  "main" >
 
+<!-- widgets -->
+<!ENTITY % widget "widget" >
+<!ENTITY % tabs "tabs" >
+<!ENTITY % accordion "accordion" >
+<!ENTITY % dialog "dialog" >
+<!ENTITY % carousel "carousel" >
+<!ENTITY % slider "slider" >
+<!ENTITY % text-block  "render-block" >
+<!ENTITY % shortdesc-block  "render-shortdesc" >
+
+<!-- listview -->
+<!ENTITY % listview  "listview" >
+
 <!-- topicref  -->
 <!ENTITY % webpageref  "webpageref" >
 
-<!-- topicref types - extractor -->
-<!ENTITY % topic-extract-title  "topic-extract-title" >
-<!ENTITY % render-topicref  "render-topicref" >
-<!ENTITY % topic-extract-short-desc  "topic-extract-short-desc" >
 
 <!-- ============================================================= -->
 <!--                    COMMON ATTLIST SETS                        -->
@@ -59,7 +67,7 @@
 <!-- all webmap topicref -->
 <!ENTITY % webmap.topicref.content
     "
-     (((%topicref;) | (render-topicref)))
+     (((%topicref;) | (render-block)))
     "
 >
 
@@ -240,6 +248,10 @@
 <!ELEMENT widget    %widget.content;>
 <!ATTLIST widget    %widget.attributes;>
 
+<!-- widget 'type' elements -->
+<!ELEMENT render-block    %widget.content;>
+<!ATTLIST render-block    %widget.attributes;>
+
 
 <!-- layout content -->
 <!ENTITY % layout.content
@@ -282,25 +294,8 @@
 <!ELEMENT column  %column.content;>
 <!ATTLIST column  %columns.attributes;>
 
-<!-- render-topicref -->
 
-
-
-<!ENTITY % render-topicref.content
-    "
-     ((%webmap.topicref.content;)*)
-    "
->
-<!ENTITY % render-topicref.attributes
-             "%web-topicref-atts;
-             keyref CDATA #IMPLIED
-             href CDATA #IMPLIED
-             as CDATA  #IMPLIED"
->
-<!ELEMENT render-topicref    %render-topicref.content;>
-<!ATTLIST render-topicref    %render-topicref.attributes;>
-
-
+<!-- default value -->
 <!ATTLIST websitetitle      %global-atts; class CDATA "+ topic/title webmap-d/websitetitle ">
 <!ATTLIST webpagetitle      %global-atts; class CDATA "+ topic/title webmap-d/webpagetitle ">
 
@@ -314,8 +309,7 @@
 <!ATTLIST main         %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/sectioning webmap-d/main ">
 
 <!ATTLIST widget       %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/widget ">
-
-<!ATTLIST render-topicref   %global-atts; class CDATA "+ map/topicref webmap-d/extractor webmap-d/render ">
+<!ATTLIST render-block   %global-atts; class CDATA "+ map/topicref mapgroup-d/topicset webmap-d/widget widget/block " type CDATA "block">
 
 
 <!-- ================== End web map domain ============================= -->
